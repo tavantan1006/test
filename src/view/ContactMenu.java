@@ -96,21 +96,22 @@ public class ContactMenu {
             System.out.println("KHÔNG THẤY SỐ ĐIỆN THOẠI NÀY TRONG DANH BẠ");
         } else {
             System.out.println("SỬA THÔNG TIN THUÊ BAO");
-            Contact contact = setContacInfo();
+            Contact contact = setContacInfo(index);
             contactManagement.updateInfo(index, contact);
             System.out.println("CẬP NHẬP THÀNH CÔNG");
             writeListToFile();
         }
     }
 
-    private Contact setContacInfo()     {
+    private Contact setContacInfo(int index)     {
+        String numberPhone = contactManagement.getContacts().get(index).getNumberPhone();
         String group = inputGroup();
         String fullName = inputFullName();
         String gender = inputGender();
         String address = inputAddress();
         String dateOfBirth = inputDateOfBirth();
         String email = inputEmail();
-        return new Contact(group, fullName, gender, address, dateOfBirth, email);
+        return new Contact(numberPhone,group, fullName, gender, address, dateOfBirth, email);
     }
 
     private void deleteNumberPhone() {
